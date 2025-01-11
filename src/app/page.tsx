@@ -1,5 +1,10 @@
 import Image from 'next/image'
-import { Disclosure, DisclosureButton, DisclosurePanel, Input} from '@headlessui/react'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Input,
+} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
@@ -36,11 +41,9 @@ export default function Home() {
                     'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
                   )}
                 />
-
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">
-
               <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
@@ -85,11 +88,9 @@ export default function Home() {
                 )}
               />
             </div>
-
           </div>
         </DisclosurePanel>
       </Disclosure>
-
 
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
