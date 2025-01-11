@@ -85,21 +85,6 @@ export default function Home() {
           </div>
           <div className="border-t border-gray-700 pb-3 pt-4">
             <div className="flex items-center px-5">
-              <div className="shrink-0">
-                <img
-                  alt=""
-                  src={user.imageUrl}
-                  className="size-10 rounded-full"
-                />
-              </div>
-              <div className="ml-3">
-                <div className="text-base/5 font-medium text-white">
-                  {user.name}
-                </div>
-                <div className="text-sm font-medium text-gray-400">
-                  {user.email}
-                </div>
-              </div>
               <Input
                 className={clsx(
                   'mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white',
