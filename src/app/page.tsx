@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Disclosure, DisclosureButton, DisclosurePanel, Input} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
@@ -10,9 +11,6 @@ const navigation = [
   { name: 'Reports', href: '#', current: false },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 export default function Home() {
   return (
     <div className="min-h-full">
@@ -21,10 +19,12 @@ export default function Home() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="shrink-0">
-                <img
+                <Image
                   alt="Your Company"
                   src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                   className="size-8"
+                  width={300}
+                  height={300}
                 />
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function Home() {
                 as="a"
                 href={item.href}
                 aria-current={item.current ? 'page' : undefined}
-                className={classNames(
+                className={clsx(
                   item.current
                     ? 'bg-gray-900 text-white'
                     : 'text-gray-300 hover:bg-gray-700 hover:text-white',
