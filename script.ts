@@ -3,18 +3,22 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  const news = await prisma.news.create({
-    data: {
-      author: 'James Politi, Harriet Clarfelt',
-      title:
-        'Wall Street stocks fall after US jobs report smashes expectations - Financial Times',
-      description:
-        'S&P 500 drops and Treasury yields rise as 256,000 positions added in December',
-      content:
-        'FT newspaper delivered Monday-Saturday, plus FT Digital Edition delivered to your device Monday-Saturday.\\r\\n<ul><li></li>Weekday Print Edition<li></li>FT Weekend<li></li>',
-    },
-  })
-  console.log(news)
+  const categories = ['Business', 'Sports', 'Education', 'Technology']
+
+  for (const category of categories) {
+    const existingCategory = await prisma.category.findFirst({
+      where: { name: category },
+    })
+
+    if (!existingCategory) {
+      const newCategory = await prisma.category.create({
+        data: { name: category },
+      })
+      console.log(`Category created: ${newCategory.name}`)
+    } else {
+      console.log(`Category already exists: ${existingCategory.name}`)
+    }
+  }
 }
 
 main()

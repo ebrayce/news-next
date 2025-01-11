@@ -9,7 +9,9 @@
     "lint": "next lint",
     "migrate": "prisma migrate deploy",
     "migrate-dev": "prisma migrate dev",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint:fix": "eslint --fix .",
+    "seed": "tsx script.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
