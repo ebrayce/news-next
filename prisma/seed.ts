@@ -7,6 +7,7 @@ export const categories = ['Business', 'Sports', 'Technology']
 type Article = {
   title: string
   author: string
+  content: string
   description: string
   urlToImage: string
   publishedAt: Date
@@ -40,37 +41,51 @@ async function loadNews() {
       const data = await res.json()
       const articles = data.articles
 
-      for (const article of articles) {
-        if (
-          !article.title ||
-          !article.content ||
-          !article.author ||
-          !article.urlToImage ||
-          !article.publishedAt ||
-          !article.description
-        ) {
-          continue
-        }
-        const existingNews = await prisma.news.findFirst({
-          where: { title: article.title },
+      const validArticles = articles.filter(
+        (article: Article) =>
+          article.title &&
+          article.content &&
+          article.author &&
+          article.urlToImage &&
+          article.publishedAt &&
+          article.description
+      )
+
+      const existingNewsTitles = await prisma.news
+        .findMany({
+          where: {
+            title: {
+              in: validArticles.map((article: Article) => article.title),
+            },
+          },
+          select: {
+            title: true,
+          },
+        })
+        .then((news) => news.map((n) => n.title))
+
+      const newArticles = validArticles.filter(
+        (article: Article) => !existingNewsTitles.includes(article.title)
+      )
+
+      if (newArticles.length > 0) {
+        const newNewsData = newArticles.map((article: Article) => ({
+          content: article.content,
+          title: article.title,
+          author: article.author,
+          description: article.description,
+          imgurl: article.urlToImage,
+          publishedAt: new Date(article.publishedAt),
+          categoryId: categories.indexOf(category) + 1,
+        }))
+
+        await prisma.news.createMany({
+          data: newNewsData,
         })
 
-        if (!existingNews) {
-          const newNews = await prisma.news.create({
-            data: {
-              content: article.content,
-              title: article.title,
-              author: article.author,
-              description: article.description,
-              imgurl: article.urlToImage,
-              publishedAt: new Date(article.publishedAt),
-              categoryId: categories.indexOf(category) + 1,
-            },
-          })
-          console.log(`News created: ${category}`)
-        } else {
-          console.log(`News already exists: ${category}`)
-        }
+        console.log(`News created: ${category}`)
+      } else {
+        console.log(`No new news to create for category: ${category}`)
       }
     })
   }
