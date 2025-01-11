@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "prisma migrate deploy",
+    "migrate-dev": "prisma migrate dev",
     "format": "prettier --write ."
   },
   "dependencies": {
