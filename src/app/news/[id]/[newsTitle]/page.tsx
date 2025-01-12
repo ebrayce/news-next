@@ -13,7 +13,7 @@ type NewsProps = {
     publishedAt: string
   } | null
 }
-const getNewsById = async (id) => {
+const getNewsById = async (id: string) => {
   return prisma.news.findUnique({
     where: { id: id },
   })
