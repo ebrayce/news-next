@@ -2,7 +2,11 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export const categories = ['Business', 'Sports', 'Technology']
+export const categories = [
+  { id: '123e4567-e89b-12d3-a456-426614174000', name: 'Business' },
+  { id: '123e4567-e89b-12d3-a456-426614174001', name: 'Sports' },
+  { id: '123e4567-e89b-12d3-a456-426614174002', name: 'Technology' },
+]
 
 type Article = {
   title: string
@@ -16,12 +20,12 @@ type Article = {
 async function createCategories() {
   for (const category of categories) {
     const existingCategory = await prisma.category.findFirst({
-      where: { name: category },
+      where: { name: category.name },
     })
 
     if (!existingCategory) {
       const newCategory = await prisma.category.create({
-        data: { name: category },
+        data: { name: category.name, id: category.id },
       })
       console.log(`Category created: ${newCategory.name}`)
     } else {
@@ -33,10 +37,11 @@ async function createCategories() {
 async function loadNews() {
   //load news base on category from newsapi
   const apiKey = process.env.NEWS_API_KEY
+  const baseUrl = process.env.NEWS_API_BASE_URL
 
   for (const category of categories) {
     fetch(
-      `https://newsapi.org/v2/top-headlines?top-headlines?country=us&category=${category}&apiKey=${apiKey}`
+      `${baseUrl}?country=us&category=${category.name}&apiKey=${apiKey}`
     ).then(async (res) => {
       const data = await res.json()
       const articles = data.articles
@@ -68,6 +73,11 @@ async function loadNews() {
         (article: Article) => !existingNewsTitles.includes(article.title)
       )
 
+      console.log(
+        `Total news fetched: ${articles.length} for category: ${category.name}`,
+        newArticles
+      )
+
       if (newArticles.length > 0) {
         const newNewsData = newArticles.map((article: Article) => ({
           content: article.content,
@@ -76,16 +86,16 @@ async function loadNews() {
           description: article.description,
           imgurl: article.urlToImage,
           publishedAt: new Date(article.publishedAt),
-          categoryId: categories.indexOf(category) + 1,
+          categoryId: category.id,
         }))
 
         await prisma.news.createMany({
           data: newNewsData,
         })
 
-        console.log(`News created: ${category}`)
+        console.log(`News created: ${category.name}`)
       } else {
-        console.log(`No new news to create for category: ${category}`)
+        console.log(`No new news to create for category: ${category.name}`)
       }
     })
   }

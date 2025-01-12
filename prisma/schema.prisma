@@ -11,7 +11,7 @@ datasource db {
 }
 
 model News {
-  id          Int       @id @default(autoincrement())
+  id          String    @id @default(uuid())
   author      String?
   title       String?
   description String?
@@ -19,11 +19,11 @@ model News {
   content     String?
   publishedAt DateTime?
   Category    Category? @relation(fields: [categoryId], references: [id])
-  categoryId  Int?
+  categoryId  String?
 }
 
 model Category {
-  id          Int     @id @default(autoincrement())
+  id          String  @id @default(uuid())
   name        String
   description String?
   news        News[]
