@@ -28,8 +28,8 @@ export default async function Page({
 }) {
   const { newsTitle, id } = await params
 
-  const news = await getNewsById(id)
-  console.log(id, news)
+  const news:NewsProps['news']  = await getNewsById(id)
+  console.log(id, news, searchParams, newsTitle)
 
   if (!news) {
     return <div>News not found</div>
