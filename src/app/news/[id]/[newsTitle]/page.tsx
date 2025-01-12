@@ -3,16 +3,16 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 type NewsProps = {
-  news: {
-    id: number
-    title: string
-    content: string
-    author: string
-    description: string
-    imgurl: string
-    publishedAt: string
-  } | null
-}
+  id: string
+  title: string
+  content: string
+  author: string
+  description: string
+  imgurl: string
+  publishedAt: Date
+  categoryId: string
+} | null
+
 const getNewsById = async (id: string) => {
   return prisma.news.findUnique({
     where: { id: id },
@@ -23,12 +23,12 @@ export default async function Page({
   params,
   searchParams,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ id: string; newsTitle: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { newsTitle, id } = await params
 
-  const news:NewsProps['news']  = await getNewsById(id)
+  const news: NewsProps = await getNewsById(id)
   console.log(id, news, searchParams, newsTitle)
 
   if (!news) {
