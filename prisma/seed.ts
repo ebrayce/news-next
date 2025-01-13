@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { CATEGORIES } from '@/util/constants'
+import { CATEGORIES } from '../src/util/constants'
 
 const prisma = new PrismaClient()
 
@@ -68,10 +68,6 @@ async function loadNews() {
         (article: Article) => !existingNewsTitles.includes(article.title)
       )
 
-      console.log(
-        `Total news fetched: ${articles.length} for category: ${category.name}`,
-        newArticles
-      )
 
       if (newArticles.length > 0) {
         const newNewsData = newArticles.map((article: Article) => ({
