@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Image } from '@/components/Image'
 import {
   Disclosure,
   DisclosureButton,
@@ -9,11 +9,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+  { name: 'Home', href: '#', current: true },
+  { name: 'Business', href: '/news/business', current: false },
+  { name: 'Sports', href: '/news/sports', current: false },
+  { name: 'Technology', href: '/news/technology', current: false },
 ]
 
 export default function Home() {
@@ -26,11 +25,12 @@ export default function Home() {
               <div className="shrink-0">
                 <Image
                   alt="Your Company"
-                  src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+                  url="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                   className="size-8"
                   width={300}
                   height={300}
-                />
+
+                 />
               </div>
             </div>
             <div className="hidden md:block">
@@ -94,7 +94,28 @@ export default function Home() {
 
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {/* Your content */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="relative h-60">
+                <Image
+                  alt="News Image"
+                  className="object-cover w-full h-full"
+                  height={'99'}
+                  url="https://images.unsplash.com/photo-1542282081-9e0a16bb7366"
+                  width="88"
+                />
+              </div>
+              <div className="p-6">
+                <h2 className="text-lg font-semibold text-gray-800">
+                  News Title
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  nec purus semper, egestas purus nec, lacinia eros.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
