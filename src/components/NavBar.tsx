@@ -15,7 +15,7 @@ export const NavBar = ({
   currentPage,
 }: {
   currentQuery: string
-  currentPage: string
+  currentPage?: string
 }) => {
   const navigation = [
     {
