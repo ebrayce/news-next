@@ -15,15 +15,15 @@ export default async function Home({
       <NavBar currentPage="" currentQuery={currentQuery as string} />
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          {currentQuery && <SearchResultNews query={currentQuery as string} />}
+        {currentQuery && <SearchResultNews query={currentQuery as string} />}
 
-          {!currentQuery &&
-            CATEGORIES.map((category) => (
-              <div key={category.name}>
-                <CategoryNews name={category.name} />
-              </div>
-            ))}
-        </div>
+        {!currentQuery &&
+          CATEGORIES.map((category) => (
+            <div key={category.name}>
+              <CategoryNews name={category.name} />
+            </div>
+          ))}
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { CATEGORIES } from '../src/util/constants'
+import { CATEGORIES, IMG_HEIGHT, IMG_WIDTH } from '../src/util/constants'
 
 const prisma = new PrismaClient()
 
@@ -37,7 +37,7 @@ async function loadNews() {
   function getRandomImage() {
     //The image on newsapi is not always available, so we use a random image from picsum
     const random = Math.floor(Math.random() * 1000)
-    return `https://picsum.photos/200/300?random=${random}`
+    return `https://picsum.photos/${IMG_HEIGHT})/${IMG_WIDTH}?random=${random}`
   }
 
   for (const category of CATEGORIES) {

@@ -1,6 +1,7 @@
 'use client'
 import NextImage from 'next/image'
 import { useState } from 'react'
+import { IMG_HEIGHT, IMG_WIDTH } from '@/util/constants'
 
 type ImageProps = {
   url: string
@@ -13,15 +14,16 @@ type ImageProps = {
 export const Image = ({
   url,
   className,
-  width = 50,
-  height = 50,
+  width = IMG_WIDTH,
+  height = IMG_HEIGHT,
+
   alt,
 }: ImageProps) => {
   const [src, setSrc] = useState(url)
 
   const handleError = () => {
     setSrc(
-      'https://picsum.photos/200/300?random=' + Math.floor(Math.random() * 1000)
+      `https://picsum.photos/${IMG_HEIGHT})/${IMG_WIDTH}?random=` + Math.floor(Math.random() * 1000)
     )
   }
 
@@ -32,6 +34,7 @@ export const Image = ({
       alt={alt || ''}
       width={width}
       height={height}
+      sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, 50vw"
       onError={handleError}
     />
   )
