@@ -34,6 +34,12 @@ async function loadNews() {
   const apiKey = process.env.NEWS_API_KEY
   const baseUrl = process.env.NEWS_API_BASE_URL
 
+  function getRandomImage() {
+    //The image on newsapi is not always available, so we use a random image from picsum
+    const random = Math.floor(Math.random() * 1000)
+    return `https://picsum.photos/200/300?random=${random}`
+  }
+
   for (const category of CATEGORIES) {
     fetch(
       `${baseUrl}?country=us&category=${category.name}&apiKey=${apiKey}`
@@ -75,7 +81,7 @@ async function loadNews() {
           title: article.title,
           author: article.author,
           description: article.description,
-          imgurl: article.urlToImage,
+          imgurl: getRandomImage(),
           publishedAt: new Date(article.publishedAt),
           categoryId: category.id,
         }))

@@ -1,4 +1,6 @@
+'use client';
 import NextImage from 'next/image';
+import { useState } from 'react'
 
 type ImageProps = {
   url: string
@@ -15,13 +17,21 @@ export const Image = ({
   height = 50,
   alt,
 }: ImageProps) => {
+  const [src, setSrc] = useState(url);
+
+  const handleError = () => {
+    setSrc('https://picsum.photos/200/300?random='+Math.floor(Math.random() * 1000));
+  };
+
   return (
     <NextImage
       className={className}
-      src={url}
+      src={src}
       alt={alt || ''}
       width={width}
       height={height}
+      objectFit={'fill'}
+      onError={handleError}
     />
   )
 }
