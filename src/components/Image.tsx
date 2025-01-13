@@ -1,11 +1,11 @@
-'use client';
-import NextImage from 'next/image';
+'use client'
+import NextImage from 'next/image'
 import { useState } from 'react'
 
 type ImageProps = {
   url: string
-  width:  number
-  height:  number
+  width: number
+  height: number
   alt?: string
   className?: string
 }
@@ -17,11 +17,13 @@ export const Image = ({
   height = 50,
   alt,
 }: ImageProps) => {
-  const [src, setSrc] = useState(url);
+  const [src, setSrc] = useState(url)
 
   const handleError = () => {
-    setSrc('https://picsum.photos/200/300?random='+Math.floor(Math.random() * 1000));
-  };
+    setSrc(
+      'https://picsum.photos/200/300?random=' + Math.floor(Math.random() * 1000)
+    )
+  }
 
   return (
     <NextImage
