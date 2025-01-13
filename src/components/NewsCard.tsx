@@ -9,7 +9,6 @@ type NewsCardProps = {
 }
 
 export const NewsCard = ({
-  image,
   url,
   description,
   title,
@@ -31,24 +30,6 @@ export const NewsCard = ({
           <p className="text-sm text-gray-600">{description}</p>
           {(publishedAt && new Date(publishedAt).toLocaleDateString()) ||
             'No Idea'}
-        </div>
-      </div>
-
-      <div className="news-card">
-        <div className="news-card__image">
-          {image && (
-            <Image
-              width={30}
-              height={40}
-              alt={title || 'News image'}
-              url={image}
-            />
-          )}
-        </div>
-        <div className="news-card__content">
-          <h2>{title}</h2>
-          <p>{description}</p>
-          {url && <a href={url}>Read more</a>}
         </div>
       </div>
     </a>

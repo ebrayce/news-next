@@ -1,5 +1,6 @@
-import { NewsEntity } from '../../types/types'
+
 import { Image } from '@/components/Image'
+import { NewsEntity } from '@/types/types'
 
 export const News = ({
   title,

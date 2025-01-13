@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { categories } from '../util/constants'
+import { CATEGORIES } from '@/util/constants'
 
 const prisma = new PrismaClient()
 
@@ -13,7 +13,7 @@ type Article = {
 }
 
 async function createCategories() {
-  for (const category of categories) {
+  for (const category of CATEGORIES) {
     const existingCategory = await prisma.category.findFirst({
       where: { name: category.name },
     })
@@ -34,7 +34,7 @@ async function loadNews() {
   const apiKey = process.env.NEWS_API_KEY
   const baseUrl = process.env.NEWS_API_BASE_URL
 
-  for (const category of categories) {
+  for (const category of CATEGORIES) {
     fetch(
       `${baseUrl}?country=us&category=${category.name}&apiKey=${apiKey}`
     ).then(async (res) => {

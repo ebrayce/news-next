@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "lint:fix": "eslint --fix .",
+    "lint:fix": "eslint --fix src",
     "prisma:migrate": "prisma migrate deploy",
     "prisma:migrate-dev": "prisma migrate dev",
     "prisma:generate": "prisma generate",
@@ -25,9 +25,11 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.2.1",
+    "lodash.debounce": "^4.0.8",
     "next": "15.1.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

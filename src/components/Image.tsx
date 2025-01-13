@@ -1,7 +1,9 @@
+import NextImage from 'next/image';
+
 type ImageProps = {
   url: string
-  width: string | number
-  height: string | number
+  width:  number
+  height:  number
   alt?: string
   className?: string
 }
@@ -9,12 +11,12 @@ type ImageProps = {
 export const Image = ({
   url,
   className,
-  width = '20px',
-  height = '50px',
+  width = 50,
+  height = 50,
   alt,
 }: ImageProps) => {
   return (
-    <img
+    <NextImage
       className={className}
       src={url}
       alt={alt || ''}
