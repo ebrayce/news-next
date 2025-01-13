@@ -2,6 +2,7 @@ import { CategoryNews } from '@/components/CategoryNews'
 import { CATEGORIES } from '@/util/constants'
 import { NavBar } from '@/components/NavBar'
 import { SearchResultNews } from '@/components/SearchResultNews'
+import { getNewsByCategoryName } from '@/services/news'
 
 export default async function Home({
   searchParams,
@@ -9,6 +10,8 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const currentQuery = (await searchParams).query || ''
+  const page = 1;
+  const limit = 5;
 
   return (
     <div className="min-h-full">
@@ -18,11 +21,16 @@ export default async function Home({
         {currentQuery && <SearchResultNews query={currentQuery as string} />}
 
         {!currentQuery &&
-          CATEGORIES.map((category) => (
-            <div key={category.name}>
-              <CategoryNews name={category.name} />
-            </div>
-          ))}
+          await Promise.all(
+            CATEGORIES.map(async (category) => {
+              const news = await getNewsByCategoryName(category.name, page, limit)
+              return (
+                <div key={category.name}>
+                  <CategoryNews news={news} categoryName={category.name} />
+                </div>
+              )
+            })
+          )}
       </div>
     </div>
   )
