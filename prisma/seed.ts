@@ -52,7 +52,6 @@ async function loadNews() {
           article.title &&
           article.content &&
           article.author &&
-          article.urlToImage &&
           article.publishedAt &&
           article.description
       )

@@ -32,7 +32,6 @@ export const Image = ({
       alt={alt || ''}
       width={width}
       height={height}
-      objectFit={'fill'}
       onError={handleError}
     />
   )
