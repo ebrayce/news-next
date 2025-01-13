@@ -1,4 +1,3 @@
-
 import { PrismaClient } from '@prisma/client'
 import { NewsEntity } from '@/types/types'
 
@@ -13,7 +12,12 @@ export const getNewsByCategoryName = async (
   categoryName: string
 ): Promise<NewsEntity[]> => {
   const category = await prisma.category.findFirst({
-    where: { name: categoryName },
+    where: {
+      name: {
+        contains: categoryName,
+        mode: 'insensitive',
+      },
+    },
   })
 
   if (!category) {

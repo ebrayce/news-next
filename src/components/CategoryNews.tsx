@@ -9,6 +9,7 @@ export const CategoryNews = async ({ name }: { name: string }) => {
     return <div>No news found</div>
   }
 
+  console.log(news)
   return news.map((news) => (
     <div key={news.id}>
       <NewsCard

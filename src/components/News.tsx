@@ -1,4 +1,3 @@
-
 import { Image } from '@/components/Image'
 import { NewsEntity } from '@/types/types'
 
