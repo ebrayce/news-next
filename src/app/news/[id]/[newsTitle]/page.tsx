@@ -11,7 +11,6 @@ export default async function Page({
 
   const news = await getNewsById(id)
 
-
   return (
     <div>
       <NavBar currentQuery={''} />

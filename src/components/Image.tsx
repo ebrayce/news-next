@@ -23,7 +23,8 @@ export const Image = ({
 
   const handleError = () => {
     setSrc(
-      `https://picsum.photos/${IMG_HEIGHT}/${IMG_WIDTH}?random=` + Math.floor(Math.random() * 1000)
+      `https://picsum.photos/${IMG_HEIGHT}/${IMG_WIDTH}?random=` +
+        Math.floor(Math.random() * 1000)
     )
   }
 

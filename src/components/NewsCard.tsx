@@ -30,7 +30,7 @@ export const NewsCard = ({
         <div className="p-6 flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
           <p className="text-sm text-gray-600">{description}</p>
-          {(publishedAt)}
+          {publishedAt}
         </div>
       </div>
     </Link>

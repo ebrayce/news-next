@@ -10,8 +10,8 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const currentQuery = (await searchParams).query || ''
-  const page = 1;
-  const limit = 5;
+  const page = 1
+  const limit = 5
 
   return (
     <div className="min-h-full">
@@ -21,16 +21,20 @@ export default async function Home({
         {currentQuery && <SearchResultNews query={currentQuery as string} />}
 
         {!currentQuery &&
-          await Promise.all(
+          (await Promise.all(
             CATEGORIES.map(async (category) => {
-              const news = await getNewsByCategoryName(category.name, page, limit)
+              const news = await getNewsByCategoryName(
+                category.name,
+                page,
+                limit
+              )
               return (
                 <div key={category.name}>
                   <CategoryNews news={news} categoryName={category.name} />
                 </div>
               )
             })
-          )}
+          ))}
       </div>
     </div>
   )
