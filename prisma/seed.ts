@@ -42,7 +42,7 @@ async function loadNews() {
 
   for (const category of CATEGORIES) {
     fetch(
-      `${baseUrl}?country=us&category=${category.name}&apiKey=${apiKey}`
+      `${baseUrl}?category=${category.name}&pageSize=100&apiKey=${apiKey}`
     ).then(async (res) => {
       const data = await res.json()
       const articles = data.articles

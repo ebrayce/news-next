@@ -35,8 +35,6 @@ export const searchNews = async (query: string): Promise<NewsEntity[]> => {
       OR: [
         { title: { contains: query } },
         { description: { contains: query } },
-        { content: { contains: query } },
-        { author: { contains: query } },
       ],
     },
   })
