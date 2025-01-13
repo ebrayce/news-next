@@ -74,7 +74,6 @@ async function loadNews() {
         (article: Article) => !existingNewsTitles.includes(article.title)
       )
 
-
       if (newArticles.length > 0) {
         const newNewsData = newArticles.map((article: Article) => ({
           content: article.content,
