@@ -37,7 +37,7 @@ async function loadNews() {
   function getRandomImage() {
     //The image on newsapi is not always available, so we use a random image from picsum
     const random = Math.floor(Math.random() * 1000)
-    return `https://picsum.photos/${IMG_HEIGHT}/${IMG_WIDTH}?random=${random}`
+    return `https://picsum.photos/${IMG_WIDTH}/${IMG_HEIGHT}?random=${random}`
   }
 
   for (const category of CATEGORIES) {

@@ -1,5 +1,6 @@
 import { Image } from '@/components/Image'
 import Link from 'next/link'
+import { IMG_HEIGHT, IMG_WIDTH } from '@/util/constants'
 
 type NewsCardProps = {
   title: string | null
@@ -10,6 +11,7 @@ type NewsCardProps = {
 }
 
 export const NewsCard = ({
+  image,
   url,
   description,
   title,
@@ -18,15 +20,18 @@ export const NewsCard = ({
   return (
     <Link href={url || '#'}>
       <div className="bg-white rounded-lg shadow-lg overflow-hidden m-6">
-        <div className="relative">
-          <Image
-            className="w-full object-cover"
-            alt="News Image"
-            url="https://images.unsplash.com/photo-1542282081-9e0a16bb7366"
-            width={300}
-            height={300}
-          />
-        </div>
+        {image && (
+          <div className="relative">
+            <Image
+              className="w-full object-cover"
+              alt="News Image"
+              url={image}
+              width={IMG_WIDTH}
+              height={IMG_HEIGHT}
+            />
+          </div>
+        )}
+
         <div className="p-6 flex flex-col gap-4">
           <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
           <p className="text-sm text-gray-600">{description}</p>

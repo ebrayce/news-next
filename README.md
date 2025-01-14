@@ -5,6 +5,7 @@
 The Simplified Online News Platform is a web application built with Next.js. It fetches news articles from a public API, displays them in a grid layout, and allows users to filter articles by category and search using keywords. The application is designed to be responsive and optimized for performance.
 
 ## Demo
+
 DEMO URL: https://news-next-omega.vercel.app/
 
 ## Features
@@ -14,7 +15,6 @@ DEMO URL: https://news-next-omega.vercel.app/
 - Displays a list of news articles fetched from a public news API (e.g., NewsAPI).
 - Each article includes the title, description, image, and publication date.
 - Pagination is implemented to navigate through different pages of articles.
-
 
 ### 2. Article Filtering
 
@@ -80,11 +80,11 @@ Ensure you have the following installed:
      NEXT_PUBLIC_API_BASE_URL=https://newsapi.org/v2
      DATABASE_URL=postgresql://postgres:password@localhost:5432/newsapi
      ```
+
 4. Seed your database:
    ```bash
    npm run deploy:dev
    ```
-   
 5. Run the development server:
    ```bash
    npm run dev
@@ -163,5 +163,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Prisma](https://www.prisma.io/)
 - [Jest](https://jestjs.io/)
-
-
