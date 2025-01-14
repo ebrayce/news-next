@@ -36,20 +36,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <head>
-      <link rel="manifest" href="/manifest.json" />
-      <meta
-        name="google-site-verification"
-        content="qSDOJp112Hb10vJ0Z10wZqHsQr-4fxAYq1TpgnCfdRA"
-      />
-      <meta
-        name="keywords"
-        content="braycenews, news, sports, technology, business, latest news, NFL, NBA, stock market, technology news, updates, trends"
-      />
-      <meta name="author" content="Ernest Brayce" />
-    </head>
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta
+          name="google-site-verification"
+          content="qSDOJp112Hb10vJ0Z10wZqHsQr-4fxAYq1TpgnCfdRA"
+        />
+        <meta
+          name="keywords"
+          content="braycenews, news, sports, technology, business, latest news, NFL, NBA, stock market, technology news, updates, trends"
+        />
+        <meta name="author" content="Ernest Brayce" />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
