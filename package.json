@@ -20,7 +20,8 @@
     "prisma:format": "prisma format",
     "deploy": "npm run prisma:migrate && npx prisma generate && npm run build && npx prisma db seed",
     "deploy:dev": "npm run prisma:migrate-dev && npx prisma generate && npx prisma db seed",
-    "test": "jest"
+    "test": "jest",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -28,6 +29,7 @@
     "@prisma/client": "^6.2.1",
     "lodash.debounce": "^4.0.8",
     "next": "15.1.4",
+    "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-toastify": "^11.0.2",
