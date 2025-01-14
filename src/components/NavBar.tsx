@@ -74,6 +74,7 @@ export const NavBar = ({
             <div className="ml-4 flex items-center md:ml-6">
               <Form action="/">
                 <Input
+                  placeholder='Search'
                   name="query"
                   defaultValue={currentQuery}
                   className={clsx(
@@ -126,6 +127,7 @@ export const NavBar = ({
             <Form action="/">
               <Input
                 name="query"
+                placeholder='Search'
                 defaultValue={currentQuery}
                 className={clsx(
                   'mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white',
