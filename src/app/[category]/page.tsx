@@ -1,6 +1,7 @@
 import { NavBar } from '@/components/NavBar'
-import { CategoryNews } from '@/components/CategoryNews'
+import { ShotCategoryNews } from '@/components/ShotCategoryNews'
 import { getNewsByCategoryName } from '@/services/news'
+import { FullCategoryNews } from '@/components/FullCategoryNews'
 
 export default async function Page({
   params,
@@ -18,9 +19,7 @@ export default async function Page({
       <NavBar currentPage={category} currentQuery="" />
 
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold mb-4">{category} - News</h1>
-
-        <CategoryNews categoryName={category} news={news} />
+        <FullCategoryNews categoryName={category} initialNews={news} />
       </div>
     </div>
   )

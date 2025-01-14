@@ -3,7 +3,7 @@ import { NewsEntity } from '@/types/types'
 import { IMG_HEIGHT, IMG_WIDTH } from '@/util/constants'
 import { formatDateTime } from '@/util/utils'
 
-export const News = ({
+export const FullNews = ({
   title,
   content,
   author,

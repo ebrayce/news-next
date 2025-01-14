@@ -17,3 +17,7 @@ export const formatDateTime = (date: Date): string => {
   })
   return `${formattedDate} at ${formattedTime}`
 }
+
+export const capitalizeFirstLetter = (string: string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}

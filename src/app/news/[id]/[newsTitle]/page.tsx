@@ -1,6 +1,6 @@
 import { getNewsById } from '@/services/news'
 import { NavBar } from '@/components/NavBar'
-import { News } from '@/components/News'
+import { FullNews } from '@/components/FullNews'
 
 export default async function Page({
   params,
@@ -19,7 +19,7 @@ export default async function Page({
 
       {news && (
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <News {...news} />
+          <FullNews {...news} />
         </div>
       )}
     </div>

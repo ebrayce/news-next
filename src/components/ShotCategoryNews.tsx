@@ -1,22 +1,19 @@
 import { NewsCard } from '@/components/NewsCard'
 import { formatDateTime, getNewsUrl } from '@/util/utils'
 import { NewsEntity } from '@/types/types'
-import { getNewsByCategoryName } from '@/services/news'
 import Link from 'next/link'
 
 type CategoryNewsProps = {
   news: { data: NewsEntity[]; total: number; totalPages: number }
   categoryName: string
 }
-export const CategoryNews = async ({
+export const ShotCategoryNews = async ({
   news,
   categoryName,
 }: CategoryNewsProps) => {
   if (!news) {
     return <div>No news found</div>
   }
-
-  const { data, totalPages, total } = await getNewsByCategoryName(categoryName)
 
   return (
     <div>

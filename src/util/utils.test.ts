@@ -1,4 +1,4 @@
-import { getNewsUrl, formatDateTime } from './utils'
+import { getNewsUrl, formatDateTime, capitalizeFirstLetter } from './utils'
 import { describe, it, expect } from '@jest/globals'
 
 describe('getNewsUrl', () => {
@@ -32,5 +32,37 @@ describe('formatDateTime', () => {
     )
     const expectedFormattedDateTime = '15 February 2021 at 08:30'
     expect(formatDateTime(date)).toBe(expectedFormattedDateTime)
+  })
+})
+
+describe('capitalizeFirstLetter', () => {
+  it('should capitalize the first letter of a lowercase string', () => {
+    const input = 'example'
+    const expectedOutput = 'Example'
+    expect(capitalizeFirstLetter(input)).toBe(expectedOutput)
+  })
+
+  it('should capitalize the first letter of an uppercase string', () => {
+    const input = 'Example'
+    const expectedOutput = 'Example'
+    expect(capitalizeFirstLetter(input)).toBe(expectedOutput)
+  })
+
+  it('should handle an empty string', () => {
+    const input = ''
+    const expectedOutput = ''
+    expect(capitalizeFirstLetter(input)).toBe(expectedOutput)
+  })
+
+  it('should handle a string with the first character already capitalized', () => {
+    const input = 'Example'
+    const expectedOutput = 'Example'
+    expect(capitalizeFirstLetter(input)).toBe(expectedOutput)
+  })
+
+  it('should handle a string with special characters', () => {
+    const input = '!example'
+    const expectedOutput = '!example'
+    expect(capitalizeFirstLetter(input)).toBe(expectedOutput)
   })
 })

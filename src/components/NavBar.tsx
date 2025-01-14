@@ -21,13 +21,17 @@ export const NavBar = ({
     {
       name: 'Business',
       href: '/business',
-      current: currentPage === 'business',
+      current: currentPage.toLocaleLowerCase() === 'business',
     },
-    { name: 'Sports', href: '/sports', current: currentPage === 'sports' },
+    {
+      name: 'Sports',
+      href: '/sports',
+      current: currentPage.toLocaleLowerCase() === 'sports',
+    },
     {
       name: 'Technology',
       href: '/technology',
-      current: currentPage === 'technology',
+      current: currentPage.toLocaleLowerCase() === 'technology',
     },
   ]
 

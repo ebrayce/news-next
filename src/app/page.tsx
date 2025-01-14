@@ -1,4 +1,4 @@
-import { CategoryNews } from '@/components/CategoryNews'
+import { ShotCategoryNews } from '@/components/ShotCategoryNews'
 import { CATEGORIES } from '@/util/constants'
 import { NavBar } from '@/components/NavBar'
 import { SearchResultNews } from '@/components/SearchResultNews'
@@ -30,7 +30,7 @@ export default async function Home({
               )
               return (
                 <div key={category.name}>
-                  <CategoryNews news={news} categoryName={category.name} />
+                  <ShotCategoryNews news={news} categoryName={category.name} />
                 </div>
               )
             })
