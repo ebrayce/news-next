@@ -1,5 +1,4 @@
 import { NavBar } from '@/components/NavBar'
-import { ShotCategoryNews } from '@/components/ShotCategoryNews'
 import { getNewsByCategoryName } from '@/services/news'
 import { FullCategoryNews } from '@/components/FullCategoryNews'
 
@@ -9,7 +8,6 @@ export default async function Page({
   params: Promise<{ category: string }>
 }) {
   const { category } = await params
-  const categoryName = 'Technology'
   const page = 1
   const limit = 5
 

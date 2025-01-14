@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { NewsEntity } from '@/types/types'
 import { NewsCard } from '@/components/NewsCard'
 import { capitalizeFirstLetter, formatDateTime, getNewsUrl } from '@/util/utils'
+import { toast } from 'react-toastify'
 
 type FullCategoryNewsProps = {
   initialNews: { data: NewsEntity[]; total: number; totalPages: number }
@@ -20,6 +21,7 @@ export const FullCategoryNews = ({
   const [loading, setLoading] = useState(false)
   const LIMIT = 5
   const tolerance = 2
+
   const loadMoreNews = async () => {
     if (loading || page >= totalPages) return
     setLoading(true)
@@ -30,8 +32,9 @@ export const FullCategoryNews = ({
       const newNews = await response.json()
       setNews((prevNews) => [...prevNews, ...newNews.data])
       setPage((prevPage) => prevPage + 1)
+      setTotalPages(newNews.totalPages)
     } catch (error) {
-      console.error('Failed to load more news:', error)
+      toast('Failed to load more news:', error)
     } finally {
       setLoading(false)
     }
@@ -43,17 +46,15 @@ export const FullCategoryNews = ({
         window.innerHeight + document.documentElement.scrollTop <
         document.documentElement.offsetHeight - tolerance
       ) {
-        console.log('Not at the bottom yet')
         return
       }
 
-      console.log('Scrolled to bottom, loading more news...')
       await loadMoreNews()
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [page, loading])
+  }, [page, loading, loadMoreNews])
 
   return (
     <div>

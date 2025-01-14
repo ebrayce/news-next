@@ -9,6 +9,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Link from 'next/link'
 import Form from 'next/form'
+import NextImage from 'next/image'
 
 export const NavBar = ({
   currentQuery,
@@ -21,17 +22,17 @@ export const NavBar = ({
     {
       name: 'Business',
       href: '/business',
-      current: currentPage.toLocaleLowerCase() === 'business',
+      current: currentPage?.toLocaleLowerCase() === 'business',
     },
     {
       name: 'Sports',
       href: '/sports',
-      current: currentPage.toLocaleLowerCase() === 'sports',
+      current: currentPage?.toLocaleLowerCase() === 'sports',
     },
     {
       name: 'Technology',
       href: '/technology',
-      current: currentPage.toLocaleLowerCase() === 'technology',
+      current: currentPage?.toLocaleLowerCase() === 'technology',
     },
   ]
 
@@ -41,10 +42,12 @@ export const NavBar = ({
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link className="shrink-0" href="/">
-              <img
+              <NextImage
                 alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                className="size-8"
+                src="/logo.png"
+                className="size-8 text-white bg-white/5 rounded-full p-1 hover:bg-white/10"
+                width={32}
+                height={32}
               />
             </Link>
             <div className="hidden md:block">
