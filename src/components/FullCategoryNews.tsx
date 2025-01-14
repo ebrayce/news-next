@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { NewsEntity } from '@/types/types'
 import { NewsCard } from '@/components/NewsCard'
 import { capitalizeFirstLetter, formatDateTime, getNewsUrl } from '@/util/utils'
@@ -23,7 +23,7 @@ export const FullCategoryNews = ({
   const LIMIT = 5
   const tolerance = 2
 
-  const loadMoreNews = async () => {
+  const loadMoreNews = useCallback(async () => {
     if (loading || page >= totalPages) return
     setLoading(true)
     try {
@@ -34,12 +34,12 @@ export const FullCategoryNews = ({
       setNews((prevNews) => [...prevNews, ...newNews.data])
       setPage((prevPage) => prevPage + 1)
       setTotalPages(newNews.totalPages)
-    } catch (error) {
-      toast('Failed to load more news', { type: 'error' })
+    } catch {
+      toast('Failed to load more news:', { type: 'error' })
     } finally {
       setLoading(false)
     }
-  }
+  }, [loading, page, totalPages, categoryName])
 
   useEffect(() => {
     const handleScroll = async () => {
@@ -59,7 +59,6 @@ export const FullCategoryNews = ({
 
   return (
     <div>
-
       <ToastComponent />
       <h1 className="text-2xl font-bold mb-4">
         {capitalizeFirstLetter(categoryName)} News
