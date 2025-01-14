@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
     <head>
       <link rel="manifest" href="/manifest.json" />
-
+      <meta name="google-site-verification" content="qSDOJp112Hb10vJ0Z10wZqHsQr-4fxAYq1TpgnCfdRA" />
     </head>
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
