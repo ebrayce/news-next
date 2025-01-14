@@ -5,6 +5,7 @@ import { NewsEntity } from '@/types/types'
 import { NewsCard } from '@/components/NewsCard'
 import { capitalizeFirstLetter, formatDateTime, getNewsUrl } from '@/util/utils'
 import { toast } from 'react-toastify'
+import { ToastComponent } from '@/components/ToastComponent'
 
 type FullCategoryNewsProps = {
   initialNews: { data: NewsEntity[]; total: number; totalPages: number }
@@ -34,7 +35,7 @@ export const FullCategoryNews = ({
       setPage((prevPage) => prevPage + 1)
       setTotalPages(newNews.totalPages)
     } catch (error) {
-      toast('Failed to load more news:', error)
+      toast('Failed to load more news', { type: 'error' })
     } finally {
       setLoading(false)
     }
@@ -58,6 +59,8 @@ export const FullCategoryNews = ({
 
   return (
     <div>
+
+      <ToastComponent />
       <h1 className="text-2xl font-bold mb-4">
         {capitalizeFirstLetter(categoryName)} News
       </h1>
