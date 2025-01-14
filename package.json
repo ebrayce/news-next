@@ -19,7 +19,7 @@
     "prisma:seed": "prisma db seed",
     "prisma:format": "prisma format",
     "deploy": "npm run prisma:migrate && npx prisma generate && npm run build && npx prisma db seed",
-    "deploy:dev": "npm run prisma:migrate-dev && npx prisma generate && prisma migrate reset && npx prisma db seed",
+    "deploy:dev": "npm run prisma:migrate-dev && npx prisma generate && npx prisma db seed",
     "test": "jest"
   },
   "dependencies": {

@@ -4,6 +4,9 @@
 
 The Simplified Online News Platform is a web application built with Next.js. It fetches news articles from a public API, displays them in a grid layout, and allows users to filter articles by category and search using keywords. The application is designed to be responsive and optimized for performance.
 
+## Demo
+DEMO URL: https://news-next-omega.vercel.app/
+
 ## Features
 
 ### 1. Article Listing Page
@@ -11,6 +14,7 @@ The Simplified Online News Platform is a web application built with Next.js. It 
 - Displays a list of news articles fetched from a public news API (e.g., NewsAPI).
 - Each article includes the title, description, image, and publication date.
 - Pagination is implemented to navigate through different pages of articles.
+
 
 ### 2. Article Filtering
 
@@ -33,7 +37,7 @@ The Simplified Online News Platform is a web application built with Next.js. It 
 
 ### 6. Error Handling
 
-- Graceful handling of API errors with user-friendly error messages.
+- Graceful handling of API errors with user-friendly error messages is implemented in the loadMoreNews function within the FullCategoryNews component. Specifically, the catch block captures any errors during the API fetch and displays a toast notification with the error message.
 
 ## Technologies Used
 
@@ -47,7 +51,7 @@ The Simplified Online News Platform is a web application built with Next.js. It 
 
 Ensure you have the following installed:
 
-- Node.js (v14 or later)
+- Node.js (v20 or later)
 - npm or yarn
 
 ### Steps
@@ -55,8 +59,8 @@ Ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/simplified-news-platform.git
-   cd simplified-news-platform
+   git clone https://github.com/ebrayce/news-next.git
+   cd news-next
    ```
 
 2. Install dependencies:
@@ -74,9 +78,14 @@ Ensure you have the following installed:
      ```env
      NEXT_PUBLIC_NEWS_API_KEY=your_news_api_key_here
      NEXT_PUBLIC_API_BASE_URL=https://newsapi.org/v2
+     DATABASE_URL=postgresql://postgres:password@localhost:5432/newsapi
      ```
-
-4. Run the development server:
+4. Seed your database:
+   ```bash
+   npm run deploy:dev
+   ```
+   
+5. Run the development server:
    ```bash
    npm run dev
    # or
@@ -91,6 +100,7 @@ Ensure you have the following installed:
 - `npm start` - Start the production server
 - `npm run lint` - Run linter to check code quality
 - `npm run lint` - Run linter to check code quality
+- `npm run test` - Run tests with Jest
 
 ## Folder Structure
 
@@ -151,3 +161,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 - [Next.js](https://nextjs.org/)
 - [NewsAPI](https://newsapi.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma](https://www.prisma.io/)
+- [Jest](https://jestjs.io/)
+
+
